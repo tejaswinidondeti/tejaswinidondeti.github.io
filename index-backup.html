@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tejaswini Dondeti 123 | GRC Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --border: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.03);
+            --shadow-lg: 0 10px 25px rgba(0,0,0,0.06);
+            --radius: 12px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        /* === NAV === */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1120px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 64px;
+        }
+        .nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--text); text-decoration: none; }
+        .nav-logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-light); font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+            text-align: center; padding: 6rem 2rem 4rem;
+            background: linear-gradient(160deg, #f0f5ff 0%, #ffffff 50%, #f5f0ff 100%);
+        }
+        .hero-content { max-width: 700px; }
+        .hero-badge {
+            display: inline-block; padding: 0.35rem 1rem; border-radius: 50px;
+            background: var(--primary-light); color: var(--primary);
+            font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+        .hero h1 { font-size: 3.2rem; font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--primary); }
+        .hero p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 2rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.95rem;
+            font-weight: 600; text-decoration: none; transition: all 0.2s;
+            cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--primary); color: #fff; }
+        .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* === SECTIONS === */
+        section { padding: 5rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-light); font-size: 1.05rem; }
+        .container { max-width: 1120px; margin: 0 auto; }
+
+        /* === ABOUT === */
+        .about-section { background: var(--bg-alt); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .about-text h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .about-text p { color: var(--text-light); margin-bottom: 1rem; }
+        .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+        .stat { text-align: center; padding: 1.25rem; background: var(--bg); border-radius: var(--radius); box-shadow: var(--shadow); }
+        .stat-number { font-size: 1.8rem; font-weight: 700; color: var(--primary); }
+        .stat-label { font-size: 0.8rem; color: var(--text-light); margin-top: 0.25rem; }
+
+        /* === SKILLS === */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+        .skill-card {
+            padding: 1.75rem; background: var(--bg); border: 1px solid var(--border);
+            border-radius: var(--radius); transition: all 0.2s;
+        }
+        .skill-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); border-color: var(--primary); }
+        .skill-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .skill-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+        .skill-card p { font-size: 0.9rem; color: var(--text-light); }
+
+        /* === PROJECTS === */
+        .projects-section { background: var(--bg-alt); }
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+        .project-card {
+            background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius);
+            overflow: hidden; transition: all 0.25s;
+        }
+        .project-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+        .project-banner {
+            height: 10px; width: 100%;
+        }
+        .project-body { padding: 1.5rem; }
+        .project-tag {
+            display: inline-block; padding: 0.2rem 0.6rem; border-radius: 4px;
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-bottom: 0.75rem;
+        }
+        .tag-risk { background: #fef2f2; color: #dc2626; }
+        .tag-compliance { background: #f0fdf4; color: #16a34a; }
+        .tag-governance { background: #eff6ff; color: #2563eb; }
+        .tag-audit { background: #fefce8; color: #ca8a04; }
+        .tag-security { background: #faf5ff; color: #9333ea; }
+        .tag-policy { background: #fff7ed; color: #ea580c; }
+        .project-body h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+        .project-body p { font-size: 0.88rem; color: var(--text-light); margin-bottom: 1rem; line-height: 1.55; }
+        .project-tools { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+        .tool-badge {
+            padding: 0.2rem 0.6rem; background: var(--bg-alt); border-radius: 4px;
+            font-size: 0.75rem; color: var(--text-light); border: 1px solid var(--border);
+        }
+        .project-link {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            font-size: 0.85rem; font-weight: 600; color: var(--primary); text-decoration: none;
+        }
+        .project-link:hover { text-decoration: underline; }
+
+        /* === CERTIFICATIONS === */
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+        .cert-card {
+            display: flex; align-items: center; gap: 1rem;
+            padding: 1.25rem; background: var(--bg); border: 1px solid var(--border);
+            border-radius: var(--radius); transition: all 0.2s;
+        }
+        .cert-card:hover { box-shadow: var(--shadow-md); }
+        .cert-icon { font-size: 2rem; }
+        .cert-info h4 { font-size: 0.95rem; margin-bottom: 0.15rem; }
+        .cert-info p { font-size: 0.8rem; color: var(--text-light); }
+
+        /* === CONTACT === */
+        .contact-section { background: var(--bg-alt); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        .contact-info h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .contact-info p { color: var(--text-light); margin-bottom: 1.5rem; }
+        .contact-item {
+            display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
+        }
+        .contact-item-icon {
+            width: 40px; height: 40px; border-radius: 8px;
+            background: var(--primary-light); display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .contact-item-text a { color: var(--primary); text-decoration: none; font-weight: 500; }
+        .contact-item-text span { font-size: 0.8rem; color: var(--text-light); display: block; }
+        .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+        .contact-form input, .contact-form textarea {
+            padding: 0.85rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+            font-family: inherit; font-size: 0.9rem; background: var(--bg);
+            transition: border-color 0.2s;
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--primary);
+        }
+        .contact-form textarea { resize: vertical; min-height: 120px; }
+
+        /* === FOOTER === */
+        footer {
+            text-align: center; padding: 2rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem; color: var(--text-light);
+        }
+
+        /* === MOBILE === */
+        .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-toggle { display: block; }
+            .hero h1 { font-size: 2.2rem; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-stats { grid-template-columns: repeat(3, 1fr); }
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        /* === ANIMATIONS === */
+        .fade-in {
+            opacity: 0; transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <a href="#" class="nav-logo">Tejaswini<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')" aria-label="Menu">&#9776;</button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content fade-in">
+        <div class="hero-badge">GRC ANALYST</div>
+        <h1>Hi, I'm <span>Tejaswini Dondeti</span></h1>
+        <p>Governance, Risk & Compliance professional with a passion for building secure, compliant, and resilient organizations. Explore my projects below.</p>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View My Projects &darr;</a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-text fade-in">
+                <h3>About Me</h3>
+                <p>
+I'm a results-driven GRC Analyst with hands-on experience across risk assessments, compliance audits, privacy programs, and security framework implementations. I've worked with organizations spanning SaaS, banking, healthcare, defense, critical infrastructure, and AI &mdash; helping them achieve and maintain compliance while reducing risk.
+                </p>
+                <p>
+                    My expertise covers 15+ frameworks including ISO 27001, NIST CSF, SOC 2, PCI DSS, HIPAA, GDPR, CCPA, CMMC, CIS Controls, COBIT, and emerging standards like ISO 42001 and the EU AI Act. I specialize in cross-framework harmonization and building scalable GRC programs.
+                </p>
+            </div>
+            <div class="about-stats fade-in">
+                <div class="stat">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Frameworks</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Certifications</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Core Competencies</h2>
+            <p>Frameworks, tools, and methodologies I work with</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#128737;</div>
+                <h3>Risk Management</h3>
+                <p>Risk assessments, risk registers, mitigation strategies, and enterprise risk management (ERM).</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#9989;</div>
+                <h3>Compliance & Audit</h3>
+                <p>SOC 2, HIPAA, GDPR, PCI-DSS audits, gap analysis, and remediation planning.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#128220;</div>
+                <h3>Policy Development</h3>
+                <p>Security policies, procedures, standards, and governance documentation.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#128274;</div>
+                <h3>Security Frameworks</h3>
+                <p>NIST CSF, ISO 27001, CIS Controls, COBIT implementation and assessment.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#128200;</div>
+                <h3>GRC Tools</h3>
+                <p>ServiceNow GRC, Archer, OneTrust, Jira, Confluence, and Excel-based tracking.</p>
+            </div>
+            <div class="skill-card fade-in">
+                <div class="skill-icon">&#127891;</div>
+                <h3>Training & Awareness</h3>
+                <p>Security awareness programs, phishing simulations, and compliance training.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Projects</h2>
+            <p>A showcase of my GRC work &mdash; click any project to learn more</p>
+        </div>
+        <div class="projects-grid">
+
+            <!-- PROJECT 1: Tech Start Inc -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #2563eb, #60a5fa);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-risk">Risk Assessment</span>
+                    <h3>ISO 27001 Risk Assessment &mdash; SaaS Cloud Migration</h3>
+                    <p><strong>Tech Start Inc</strong> &bull; SaaS / Cloud<br>Conducted ISO 27001:2022 risk assessment for a B2B SaaS company migrating a 5M+ record database to AWS; identified 5 critical risks and designed controls mapped to ISO 27001 Annex A and NIST CSF.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">ISO 27001:2022</span>
+                        <span class="tool-badge">NIST CSF</span>
+                        <span class="tool-badge">AWS</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2: Fin Secure Bank -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #dc2626, #f87171);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-audit">Audit</span>
+                    <h3>Vendor Risk Assessment &mdash; Payment Processor</h3>
+                    <p><strong>Fin Secure Bank</strong> &bull; Banking / Financial Services<br>Led vendor risk assessment for an FDIC-insured bank evaluating a payment processor; identified 3 compliance gaps including a breach notification SLA conflict with FDIC's 36-hour regulatory deadline.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">PCI DSS v4.0</span>
+                        <span class="tool-badge">SOC 2 Type II</span>
+                        <span class="tool-badge">FDIC</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 3: Data Flow Analytics -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #16a34a, #4ade80);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-compliance">Compliance</span>
+                    <h3>SOC 2 Type II Audit Readiness</h3>
+                    <p><strong>Data Flow Analytics</strong> &bull; Cloud SaaS<br>Prepared a cloud analytics company for SOC 2 Type II audit; collected 80+ evidence items across 4 audit phases and coordinated with auditors through to zero critical findings.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">SOC 2 Type II</span>
+                        <span class="tool-badge">ISO 27001</span>
+                        <span class="tool-badge">Evidence Collection</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 4: EuroShop GmbH -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #9333ea, #c084fc);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-policy">Privacy</span>
+                    <h3>GDPR Privacy Program &mdash; EU E-Commerce</h3>
+                    <p><strong>EuroShop GmbH</strong> &bull; E-Commerce (EU)<br>Conducted 6 DPIAs and implemented 10 privacy controls for an EU e-commerce company with 3M+ customers; established DSAR workflows with 30-day response timelines per GDPR Article 12.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">GDPR</span>
+                        <span class="tool-badge">ISO 27701</span>
+                        <span class="tool-badge">DPIA</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 5: HealthTech Systems -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #ca8a04, #fbbf24);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-security">Security</span>
+                    <h3>HIPAA Incident Response Program</h3>
+                    <p><strong>HealthTech Systems</strong> &bull; Healthcare<br>Designed a 5-phase HIPAA incident response program; developed breach notification workflows and tabletop exercises covering ransomware, insider threat, and third-party breach scenarios.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">HIPAA</span>
+                        <span class="tool-badge">NIST CSF</span>
+                        <span class="tool-badge">Incident Response</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 6: Cloud Native Corp -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #ea580c, #fb923c);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-security">Security</span>
+                    <h3>CIS Controls v8 &mdash; AWS Hardening</h3>
+                    <p><strong>Cloud Native Corp</strong> &bull; AWS / Cloud<br>Performed CIS Controls v8 assessment of an AWS environment; identified critical misconfigurations (exposed S3 buckets, overprivileged IAM) and implemented 7 hardening controls including GuardDuty and Security Hub.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">CIS Controls v8</span>
+                        <span class="tool-badge">NIST CSF 2.0</span>
+                        <span class="tool-badge">AWS</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 7: Critical Ops Inc -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #2563eb, #818cf8);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-governance">Governance</span>
+                    <h3>BCP/DR for Critical Infrastructure</h3>
+                    <p><strong>Critical Ops Inc</strong> &bull; Critical Infrastructure<br>Developed BCP/DR program for an operator managing SCADA for 12 water treatment plants and 28 power grid substations serving 10M+ citizens; established 5-minute RTO for power grid systems.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">ISO 22301</span>
+                        <span class="tool-badge">NERC CIP</span>
+                        <span class="tool-badge">SCADA</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 8: Reg Tech Solutions -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #dc2626, #fb7185);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-compliance">Compliance</span>
+                    <h3>Cross-Framework Compliance Harmonization</h3>
+                    <p><strong>Reg Tech Solutions</strong> &bull; RegTech / SaaS<br>Performed simultaneous PCI DSS, SOC 2, and HIPAA gap analysis; harmonized 15 cross-framework controls reducing total compliance effort by ~40% through shared control architecture.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">PCI DSS v4.0</span>
+                        <span class="tool-badge">SOC 2</span>
+                        <span class="tool-badge">HIPAA</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 9: Secure Bank Digital -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #16a34a, #86efac);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-security">Security</span>
+                    <h3>Zero Trust Architecture &mdash; Digital Banking</h3>
+                    <p><strong>Secure Bank Digital</strong> &bull; Digital Banking / FinTech<br>Designed Zero Trust Architecture for a challenger bank with $3.2B in deposits; implemented 12 ZTA controls across identity, device, network, and application pillars using Okta, Zscaler, and CyberArk.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">NIST SP 800-207</span>
+                        <span class="tool-badge">COBIT 2019</span>
+                        <span class="tool-badge">Zero Trust</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 10: Mindful AI -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #9333ea, #d8b4fe);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-governance">Governance</span>
+                    <h3>AI Governance &mdash; Healthcare &amp; FinTech</h3>
+                    <p><strong>Mindful AI</strong> &bull; AI / Healthcare / FinTech<br>Implemented an AI governance program for high-risk AI systems; assessed 5 AI-specific risks including algorithmic bias and model drift using NIST AI RMF methodology.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">ISO 42001</span>
+                        <span class="tool-badge">NIST AI RMF</span>
+                        <span class="tool-badge">EU AI Act</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 11: GlobalParts Manufacturing -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #ca8a04, #fde047);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-compliance">Compliance</span>
+                    <h3>CMMC Level 2 &mdash; Defense Supplier</h3>
+                    <p><strong>GlobalParts Manufacturing</strong> &bull; Defense / Manufacturing<br>Led CMMC Level 2 compliance program for a defense supplier with $50M in DoD contracts; achieved 78/110 NIST 800-171 practices and developed System Security Plan (SSP) for C3PAO assessment.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">CMMC 2.0</span>
+                        <span class="tool-badge">NIST SP 800-171</span>
+                        <span class="tool-badge">DFARS</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 12: Consumer First Retail -->
+            <div class="project-card fade-in">
+                <div class="project-banner" style="background: linear-gradient(90deg, #ea580c, #fdba74);"></div>
+                <div class="project-body">
+                    <span class="project-tag tag-policy">Privacy</span>
+                    <h3>Global Privacy Program &mdash; Multi-Jurisdiction</h3>
+                    <p><strong>Consumer First Retail</strong> &bull; Retail / Global<br>Designed a global privacy program for an 8M-customer retailer across 40 countries; unified GDPR, CCPA/CPRA, and 4 US state privacy laws with a Consent Management Platform and SCCs for cross-border data transfers.</p>
+                    <div class="project-tools">
+                        <span class="tool-badge">GDPR</span>
+                        <span class="tool-badge">CCPA/CPRA</span>
+                        <span class="tool-badge">ISO 27701</span>
+                    </div>
+                    <a href="#" class="project-link">View Details &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Certifications</h2>
+            <p>Professional certifications and credentials</p>
+        </div>
+        <div class="certs-grid">
+            <!-- EDIT: Replace with your actual certifications -->
+            <div class="cert-card fade-in">
+                <div class="cert-icon">&#127942;</div>
+                <div class="cert-info">
+                    <h4>CompTIA Security+</h4>
+                    <p>CompTIA &bull; Add your date</p>
+                </div>
+            </div>
+            <div class="cert-card fade-in">
+                <div class="cert-icon">&#127942;</div>
+                <div class="cert-info">
+                    <h4>CISA (or your cert)</h4>
+                    <p>ISACA &bull; Add your date</p>
+                </div>
+            </div>
+            <div class="cert-card fade-in">
+                <div class="cert-icon">&#127942;</div>
+                <div class="cert-info">
+                    <h4>ISO 27001 Lead Auditor</h4>
+                    <p>Add issuer &bull; Add your date</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <div class="section-header fade-in">
+            <h2>Let's Connect</h2>
+            <p>Interested in working together? Reach out!</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info fade-in">
+                <h3>Get in touch</h3>
+                <p>I'm always open to discussing new opportunities, GRC challenges, or just connecting with fellow professionals.</p>
+                <div class="contact-item">
+                    <div class="contact-item-icon">&#9993;</div>
+                    <div class="contact-item-text">
+                        <a href="mailto:tejaswinidondeti2014@gmail.com">tejaswinidondeti2014@gmail.com</a>
+                        <span>Email</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">&#128279;</div>
+                    <div class="contact-item-text">
+                        <!-- EDIT: Add your LinkedIn URL -->
+                        <a href="https://linkedin.com/in/your-profile" target="_blank">LinkedIn Profile</a>
+                        <span>LinkedIn</span>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">&#128205;</div>
+                    <div class="contact-item-text">
+                        <!-- EDIT: Add your location -->
+                        <a href="#">Your City, State</a>
+                        <span>Location</span>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form fade-in" onsubmit="event.preventDefault(); alert('Thank you! Message sent.');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="text" placeholder="Subject">
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn btn-primary" style="width: fit-content;">Send Message &rarr;</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 Tejaswini Dondeti. All rights reserved.</p>
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+<!-- Auto-refresh on save when served locally (no effect on GitHub Pages) -->
+<script>
+(function () {
+    var host = location.hostname;
+    if (host !== 'localhost' && host !== '127.0.0.1') return;
+    var path = location.pathname.split('/').pop() || 'index.html';
+    var last = null;
+    setInterval(function () {
+        fetch(path + '?_lr=' + Date.now(), { method: 'HEAD', cache: 'no-store' })
+            .then(function (r) { return r.headers.get('last-modified'); })
+            .then(function (lm) {
+                if (!lm) return;
+                if (last === null) { last = lm; return; }
+                if (lm !== last) location.reload();
+            })
+            .catch(function () {});
+    }, 700);
+})();
+</script>
+
+</body>
+</html>
