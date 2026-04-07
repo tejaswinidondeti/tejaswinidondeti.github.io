@@ -102,7 +102,7 @@
         <div class="meta-row">
             <div class="meta-item"><strong>Company:</strong> DataFlow Analytics (300 employees)</div>
             <div class="meta-item"><strong>Industry:</strong> AI / Business Intelligence SaaS</div>
-            <div class="meta-item"><strong>Frameworks:</strong> SOC 2 Trust Services Criteria, NIST CSF</div>
+            <div class="meta-item"><strong>Frameworks:</strong> SOC 2 Trust Services Criteria, NIST CSF 2.0</div>
             <div class="meta-item"><strong>Scope:</strong> 12 Controls, 4 Systems, 5 Evidence Items, 5 Tests</div>
         </div>
     </div>
@@ -155,7 +155,7 @@
 
     <div class="risk-card">
         <h3>C-01: Logical Access Control &mdash; Role-Based Access</h3>
-        <p><strong>SOC 2:</strong> CC6.1 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.AC-1, PR.AC-4</p>
+        <p><strong>SOC 2:</strong> CC6.1 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.AA-01, PR.AA-05</p>
         <ul>
             <li>5 RBAC roles: Admin (8), Developer (25, read-only prod), Data Engineer (6), Support (12, read-only), Client User (12,000+)</li>
             <li>Access requests via Jira Service Desk with business justification and manager approval</li>
@@ -166,7 +166,7 @@
 
     <div class="risk-card">
         <h3>C-02: Multi-Factor Authentication Enforcement</h3>
-        <p><strong>SOC 2:</strong> CC6.1, CC6.6 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.AC-7</p>
+        <p><strong>SOC 2:</strong> CC6.1, CC6.6 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.AA-03</p>
         <ul>
             <li>MFA required for all access with no exceptions</li>
             <li>Admins: hardware YubiKey 5 NFC; employees: TOTP via Okta Verify</li>
@@ -177,7 +177,7 @@
 
     <div class="risk-card">
         <h3>C-03: User Provisioning &amp; Deprovisioning</h3>
-        <p><strong>SOC 2:</strong> CC6.2, CC6.3 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.AC-1, PR.AC-6</p>
+        <p><strong>SOC 2:</strong> CC6.2, CC6.3 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.AA-01, PR.AA-02</p>
         <ul>
             <li>Automated via Okta + BambooHR integration</li>
             <li>New hires auto-provisioned with correct role based on department/job title</li>
@@ -188,7 +188,7 @@
 
     <div class="risk-card">
         <h3>C-04: Data Encryption at Rest and in Transit</h3>
-        <p><strong>SOC 2:</strong> CC6.7, C1.1 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.DS-1, PR.DS-2</p>
+        <p><strong>SOC 2:</strong> CC6.7, C1.1 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.DS-01, PR.DS-02</p>
         <ul>
             <li>At rest: AES-256 via AWS KMS customer-managed keys (RDS, S3, EBS)</li>
             <li>In transit: TLS 1.3 required; TLS 1.2 and below disabled on all public endpoints</li>
@@ -199,7 +199,7 @@
 
     <div class="risk-card">
         <h3>C-05: Network Segmentation &amp; Firewall Controls</h3>
-        <p><strong>SOC 2:</strong> CC6.6 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.AC-5, PR.PT-4</p>
+        <p><strong>SOC 2:</strong> CC6.6 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.IR-01, PR.IR-04</p>
         <ul>
             <li>ECS runs in private subnets &mdash; traffic only through ALB + CloudFront</li>
             <li>RDS in isolated private subnets &mdash; accessible only by application layer via security groups</li>
@@ -210,7 +210,7 @@
 
     <div class="risk-card">
         <h3>C-06: Vulnerability Management &amp; Patching</h3>
-        <p><strong>SOC 2:</strong> CC7.1, CC3.2 &nbsp;|&nbsp; <strong>NIST CSF:</strong> DE.CM-8, ID.RA-1</p>
+        <p><strong>SOC 2:</strong> CC7.1, CC3.2 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> DE.CM-09, ID.RA-01</p>
         <ul>
             <li>Weekly Qualys scans on all production systems</li>
             <li>Trivy container image scanning in CI/CD &mdash; Critical/High CVEs auto-block deployment</li>
@@ -221,7 +221,7 @@
 
     <div class="risk-card">
         <h3>C-07: Change Management Process</h3>
-        <p><strong>SOC 2:</strong> CC8.1 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.IP-3</p>
+        <p><strong>SOC 2:</strong> CC8.1 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.PS-01</p>
         <ul>
             <li>All changes via feature branch + pull request with peer review</li>
             <li>CI/CD pipeline: unit tests (85%+ coverage), Semgrep SAST, container scanning, staging QA</li>
@@ -232,7 +232,7 @@
 
     <div class="risk-card">
         <h3>C-08: Security Monitoring &amp; Alerting (SIEM)</h3>
-        <p><strong>SOC 2:</strong> CC7.2, CC7.1 &nbsp;|&nbsp; <strong>NIST CSF:</strong> DE.AE-2, DE.CM-1</p>
+        <p><strong>SOC 2:</strong> CC7.2, CC7.1 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> DE.AE-02, DE.CM-01</p>
         <ul>
             <li>Datadog SIEM collecting: CloudTrail, VPC Flow Logs, Okta, application logs, RDS audit logs</li>
             <li>Automated alerts: 5+ failed logins in 10 min, admin actions off-hours, large data exports, new geo logins, security group/IAM changes</li>
@@ -242,7 +242,7 @@
 
     <div class="risk-card">
         <h3>C-09: Incident Response Plan &amp; Procedures</h3>
-        <p><strong>SOC 2:</strong> CC7.3, CC7.4 &nbsp;|&nbsp; <strong>NIST CSF:</strong> RS.RP-1, RS.CO-2</p>
+        <p><strong>SOC 2:</strong> CC7.3, CC7.4 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> RS.MA-01, RS.CO-02</p>
         <ul>
             <li>4 severity levels (P1-P4) with defined escalation paths and roles (Incident Commander, Tech Lead, Comms Lead)</li>
             <li>Client notification: 24 hours for confidentiality incidents, 4 hours for availability incidents</li>
@@ -253,7 +253,7 @@
 
     <div class="risk-card">
         <h3>C-10: Business Continuity &amp; Disaster Recovery</h3>
-        <p><strong>SOC 2:</strong> A1.2, A1.3 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.IP-9, RC.RP-1</p>
+        <p><strong>SOC 2:</strong> A1.2, A1.3 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.IR-02, RC.RP-01</p>
         <ul>
             <li>Multi-AZ RDS failover, ECS across 3 AZs with auto-scaling</li>
             <li>DR: primary us-east-1, backup us-west-2; RTO target 2 hours, RPO target 15 minutes</li>
@@ -264,7 +264,7 @@
 
     <div class="risk-card">
         <h3>C-11: Risk Assessment Process</h3>
-        <p><strong>SOC 2:</strong> CC3.1, CC3.2 &nbsp;|&nbsp; <strong>NIST CSF:</strong> ID.RA-1, ID.RA-5</p>
+        <p><strong>SOC 2:</strong> CC3.1, CC3.2 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> ID.RA-01, ID.RA-05</p>
         <ul>
             <li>Annual risk assessment for all in-scope systems using 5x5 likelihood/impact matrix</li>
             <li>Risks mapped to SOC 2 criteria with documented treatment (mitigate, accept, transfer, avoid)</li>
@@ -275,7 +275,7 @@
 
     <div class="risk-card">
         <h3>C-12: Confidential Data Classification &amp; Handling</h3>
-        <p><strong>SOC 2:</strong> C1.1, C1.2 &nbsp;|&nbsp; <strong>NIST CSF:</strong> PR.DS-3, PR.IP-6</p>
+        <p><strong>SOC 2:</strong> C1.1, C1.2 &nbsp;|&nbsp; <strong>NIST CSF 2.0:</strong> PR.DS-10, PR.DS-11</p>
         <ul>
             <li>3-tier classification: Confidential (client data), Internal (business data), Public (marketing)</li>
             <li>Client data auto-classified as Confidential at upload; encrypted AES-256 + TLS 1.3</li>
